@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>타임리프 a링크</h3>
+<!--
+타임리프 문법 사용 시 속성없이 th:를 붙임
+-->
+    <th:block th:each="list : ${list}">
+        <a th:href="@{ex03_ok(name=${list.name})}">[[${list.name}]]</a>
+        <br>
+    </th:block>
+</body>
+</html>

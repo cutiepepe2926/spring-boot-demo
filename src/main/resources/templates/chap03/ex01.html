@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h3>타임리프 문법</h3>
+<!--
+타임리프 문법 사용 시 속성없이 th:를 붙임
+-->
+    <p th:text="${'출력문!!'}"></p>
+    <p>[[${'출력문!!'}]]</p>
+    <p>[[${1==1}]]</p>
+    <p>[[${true and false}]]</p>
+    <p>[[${true || false}]]</p>
+
+    <p>변수 선언</p>
+    <div th:with="a=10">
+        <span th:if="${a==10}">if문 실행방법</span><br>
+        <span th:if="${a==1}">if문 실행방법안될걸?</span><br>
+        <span th:unless="${a==1}">if문 실행방법2</span><br>
+
+    </div>
+    <h3>삼항 연산자</h3>
+    <div th:with="a = '홍길동' ">
+        [[${a=='홍길동' ? '예' : '아니요'}]]
+
+    </div>
+</body>
+</html>

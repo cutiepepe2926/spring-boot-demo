@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>quiz01_ok</title>
+</head>
+<body>
+<h2>회원가입 성공</h2>
+id:[[${info.id}]]<br>
+pw:[[${info.pw}]]<br>
+email:[[${info.email}]]<br>
+정보이용동의:<p th:text="${info.agree} ? '동의' : '비동의'"></p>
+<br>
+</body>
+</html>
