@@ -3,6 +3,7 @@ package com.example.basic;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+// 여기서 컴포넌트 스캔 시작 (base패키지를 읽음)
 @SpringBootApplication
 public class SpringBootDemoApplication {
 
