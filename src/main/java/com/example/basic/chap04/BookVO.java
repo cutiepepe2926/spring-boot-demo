@@ -1,22 +1,33 @@
 package com.example.basic.chap04;
 
 public class BookVO {
-    private String bookName;
+    //데이터베이스 컬럼명과 일치되는 멤버변수를 선언
     private long id;
+    private String title;
+    private String author;
 
     public BookVO() {}
-
-    public BookVO(String bookName, long id) {
-        this.bookName = bookName;
+    public BookVO(long id, String title,String author) {
+        this.author = author;
         this.id = id;
+        this.title = title;
     }
 
-    public String getBookName() {
-        return bookName;
+    @Override
+    public String toString() {
+        return "BookVO{" +
+                "author='" + author + '\'' +
+                ", id=" + id +
+                ", title='" + title + '\'' +
+                '}';
     }
 
-    public void setBookName(String bookName) {
-        this.bookName = bookName;
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public long getId() {
@@ -25,5 +36,13 @@ public class BookVO {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

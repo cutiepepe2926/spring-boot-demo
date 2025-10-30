@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--이 xml 파일의 인터페이스의 위치를 패키지명 포함해서 전체를 적음-->
+<mapper namespace="com.example.basic.chap05.jdbc.TestMapper">
+<!--SQL문 작성-->
+<!--    select, update, insert, delete 태그를 사용할 수 있음-->
+<!--    id - 인터페이스의 메서드 명 -->
+<!--    resultType - SELECT한 실행결과를 어떤 데이터 타입으로 맵핑할건지 지정해주는 것(String, int, double, 객체)-->
+<!--    세미콜론 ( ; ) 불필요-->
+    <select id="getTime" resultType="string">
+
+        SELECT SYSDATE FROM DUAL
+
+    </select>
+</mapper>

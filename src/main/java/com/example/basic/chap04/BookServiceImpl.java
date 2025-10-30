@@ -1,21 +1,35 @@
 package com.example.basic.chap04;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-@Service
-public class BookServiceImpl /*implements BookService*/ {
-    private List<BookVO> list = new ArrayList<>();
-    private long newId = 1;
+import java.util.ArrayList;
+import java.util.List;
 
+//base패키지 밑에 클래스를 생성
+@Service("bookService")
+public class BookServiceImpl implements BookService {
 
+//    @Autowired
+//    @Qualifier("bookRepository")
+//    private BookRepository bookRepository;
+
+    @Autowired
+    private BookMapper bookMapper;
+
+    @Override
     public List<BookVO> list() {
-        return list;
+        return bookMapper.list();
     }
 
+    @Override
+    public void bookRegist(BookVO bookVO) {
+        bookMapper.bookRegist(bookVO);
+    }
 
-    public boolean bookRegister(BookVO bookvo) {
-        return true;
+    @Override
+    public void bookDelete(long id) {
+        bookMapper.bookDelete(id);
     }
 }

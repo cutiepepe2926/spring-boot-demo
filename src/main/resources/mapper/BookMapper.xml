@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--이 xml 파일의 인터페이스의 위치를 패키지명 포함해서 전체를 적음-->
+<mapper namespace="com.example.basic.chap04.BookMapper">
+<!--    한 행에 대한 -->
+    <select id="list" resultType="BookVO">
+        SELECT * FROM BOOK ORDER BY ID DESC
+    </select>
+<!--매개변수에 대해서 선언하는게 parameterType이라고 명시해주는 편이 좋음
+    parameterType에는 전달되는 파라미터의 경로르 적으면 됨 (생략가능)
+    파라미터가 있다면 #{getter명}을 적어준다.
+-->
+    <insert id="bookRegist" parameterType="BookVO">
+        INSERT INTO BOOK(ID, TITLE, AUTHOR) VALUES (BOOK_SEQ.NEXTVAL, #{title}, #{author})
+    </insert>
+
+<!--파라미터가 객체가 아니라 단일 값이면, 인터페이스의 매개변수명을 쓰면 된다.
+    단, 마이바티스 파라미터 개수를 기본 1개 밖에 받지 못함
+    bookDelete(long id)는 되는데, bookDelete(long id, String name)이런 식으로 매개변수가 2개 이상이면,
+    매개변수 이름을 직접 지정해줘야함.
+-->
+    <delete id="bookDelete" parameterType="long">
+        DELETE FROM BOOK WHERE ID = #{id}
+    </delete>
+
+</mapper>

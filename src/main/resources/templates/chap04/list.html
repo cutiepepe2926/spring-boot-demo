@@ -23,12 +23,14 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>Sample Title</td>
-                <td>Sample Author</td>
+            <tr th:each="vo : ${list} ">
+                <td>[[${vo.id}]]</td>
+                <td>[[${vo.title}]]</td>
+                <td>[[${vo.author}]]</td>
                 <td>
-                    <form action="" method="post">
+                    <form action="bookDelete" method="post">
+                        <!-- id를 숨겨서 보내는 방법-->
+                        <input type="hidden" name="id" th:value="${vo.id}">
                         <button type="submit">Delete</button>
                     </form>
                 </td>
