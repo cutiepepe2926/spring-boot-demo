@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+</head>
+<body>
+    <h3> 파일 업로드 </h3>
+
+<!--    enctype 은 폼 태그의 타입을 지정하는 속성-->
+    <form action="upload_ok" method="post" enctype="multipart/form-data">
+        파일태그 : <input type="file" name="file">
+        <input type="submit" name="업로드">
+    </form>
+
+<!--여러 파일 업로드 multiple 옵션 + 컨트롤 클릭으로 여러 파일 선택 가능-->
+    <form action="upload_ok2" method="post" enctype="multipart/form-data">
+        파일태그 : <input type="file" name="file" multiple>
+        <input type="submit" name="업로드">
+    </form>
+
+<!--여러 파일 업로드2-->
+    <form action="upload_ok3" method="post" enctype="multipart/form-data">
+        파일태그 : <input type="file" name="file" multiple>
+        파일태그 : <input type="file" name="file" multiple>
+        파일태그 : <input type="file" name="file" multiple>
+        파일태그 : <input type="file" name="file" multiple>
+        <input type="submit" name="업로드">
+    </form>
+
+
+<!--비동기 유형의 업로드 (중요!)-->
+    <h3>비동기 업로드 예제</h3>
+    <input type="file" name="file" id="my_file">
+    <button type="button" id="btn">파일 전송</button>
+    <script>
+
+        let btn = document.getElementById("btn");
+
+        btn.addEventListener("click", () => {
+            //파일 업로드 비동기 보내는 경우
+            //타입 : 멀티파트, 폼 객체 생성해서 날려주면 됨
+
+            // files[0]로 접근하면 파일과 관련된 데이터 얻기 가능
+            let myFile = document.getElementById("my_file");
+
+            let formData = new FormData();
+            //formData.append("키","값"); 이렇게 보냄
+
+            formData.append("file", myFile.files[0]); //얘가 인풋 태그의 파일 데이터를 의미함
+            fetch("upload_ok4", {
+                method: "POST",
+                body: formData
+            })
+                .then(
+                    response => response.text()
+                )
+                .then(data => console.log(data))
+        })
+
+
+    </script>
+
+</body>
+</html>
